@@ -18,5 +18,24 @@ export class DateTimePage implements OnInit {
     console.log(event);
     console.log(new Date( event.detail.value));
   }
+  
+  customYearValues = [2025,2020, 2016, 2008, 2004, 2000, 1996, 1981];
+  customPickerOptions = {
+    backdropDismiss:false,
+    buttons: [
+      {
+        text: 'Datos',
+        handler: ( event ) => {
+          console.log(event);
+        }
+      },
+      {
+        text: 'Log',
+        handler: () => {
+          console.log("log!");
+        }
+      }
+    ]
+  }
 
 }
