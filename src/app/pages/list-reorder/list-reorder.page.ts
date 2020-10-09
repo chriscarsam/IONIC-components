@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ListReorderPage implements OnInit {
 
   personajes: string[] = ['Aquaman', 'Superman', 'Batman', 'Mujer Maravilla', 'Flash'];
+  reorderDisable:boolean = true;
 
   constructor() { }
 
@@ -24,5 +25,5 @@ export class ListReorderPage implements OnInit {
     event.detail.complete();
     
     console.log(this.personajes);
-  }
+  }   
 }
