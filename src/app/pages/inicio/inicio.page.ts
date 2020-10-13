@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
-interface Componente{
-  icon: string;
-  name: string;
-  redirectTo: string;
-}
+import { MenuController } from '@ionic/angular';
+import { Observable } from 'rxjs';
+import { Componente } from 'src/app/interfaces/interfaces';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-inicio',
@@ -13,77 +11,16 @@ interface Componente{
 })
 export class InicioPage implements OnInit {
 
-  componentes: Componente[] = [
-    {
-      icon: 'american-football',
-      name: 'Action Sheet',
-      redirectTo: '/action-sheet'
-    },
-    {
-      icon: 'alert-circle',
-      name: 'Alert',
-      redirectTo: '/alert'
-    },
-    {
-      icon: 'beaker',
-      name: 'Avatar',
-      redirectTo: '/avatar'
-    },
-    {
-      icon: 'radio-button-on-outline',
-      name: 'Buttons',
-      redirectTo: '/button'
-    },
-    {
-      icon: 'card',
-      name: 'Card',
-      redirectTo: '/card'
-    },
-    {
-      icon: 'checkmark-circle',
-      name: 'Checks',
-      redirectTo: '/check'
-    },
-    {
-      icon: 'calendar',
-      name: 'Datetime',
-      redirectTo: '/date-time'
-    },
-    {
-      icon: 'car',
-      name: 'Fab',
-      redirectTo: '/fab'
-    },
-    {
-      icon: 'grid',
-      name: 'Grid',
-      redirectTo: '/grid'
-    },
-    {
-      icon: 'infinite',
-      name: 'Infinite-Scroll',
-      redirectTo: '/infinite'
-    },
-    {
-      icon: 'hammer',
-      name: 'Input Forms',
-      redirectTo: '/input'
-    },
-    {
-      icon: 'list',
-      name: 'List - Sliding',
-      redirectTo: '/list'
-    },
-    {
-      icon: 'reorder-three',
-      name: 'List - Reorder',
-      redirectTo: '/list-reorder'
-    }
-  ]
+  componentes: Observable<Componente[]>;
 
-  constructor() { }
+  constructor( private menuCtrl: MenuController,
+               private dataService: DataService ) { }
 
   ngOnInit() {
+    this.componentes = this.dataService.getMenuOpts();
   }
 
+  mostrarMenu(){
+    this.menuCtrl.open('first');
+  }
 }
