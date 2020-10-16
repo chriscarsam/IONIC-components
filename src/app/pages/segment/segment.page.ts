@@ -10,6 +10,7 @@ import { DataService } from '../../services/data.service';
 export class SegmentPage implements OnInit {
 
   superHeroes: Observable<any>;
+  publisher: string = '';
 
   constructor(private dataService: DataService) { }
 
@@ -18,6 +19,10 @@ export class SegmentPage implements OnInit {
   }
 
   segmentChanged( event ){
-    console.log(event.detail.value);
+    // console.log(event.detail.value);
+    // if( event.detail.value === 'todos' ){
+    //   return this.publisher = '';
+    // }
+    this.publisher = event.detail.value;
   }
 }
